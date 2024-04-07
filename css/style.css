@@ -1,3 +1,138 @@
+
+:root {
+    --colored-text-color: #5853F6;
+    --project-tag-text-color: #333333;
+    --project-tag-bg-color: #F1F1F1;
+
+    --side-margin: 70px;
+    --navbar-height: 90px;
+    --navbar-items-spacing: 50px;
+    --welcome-text-line-height: 24pt;
+    --project-card-padding: 60px;
+    --project-card-border-radius: 30px;
+    --project-tag-height: 40px;
+    --project-tag-spacing: 16px;
+    --footbar-height: var(--navbar-height);
+
+    --navbar-font: 16px MontserratRegular;
+    --welcome-title-font: 32px MontserratBlack;
+    --welcome-text-font: 16px MontserratLight;
+    --section-title-font: 30px MontserratBlack;
+    --project-outline-font: 16px MontserratExtraBold;
+    --project-title-font: 26px MontserratBlack;
+    --project-card-font: 16px  MontserratLight;
+    --project-tag-font: 14px MontserratSemiBold;
+}
+
+body {
+    margin: 0 auto;
+    padding: 0 var(--side-margin);
+    padding-top: 200px;
+    background: url(../svg/bg.svg) no-repeat top center;
+    background-size: cover;
+}
+
+nav {
+    height: var(--navbar-height);
+    background: white;
+    width: calc(100% - 2 * var(--side-margin));
+    padding: 0 var(--side-margin);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+nav ul {
+    padding: 0 var(--side-margin);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    column-gap: var(--navbar-items-spacing);
+}
+
+nav ul::before {
+    content: '';
+    display: block;
+    flex: auto;
+}
+
+nav li {
+    display: block;
+    position: relative;
+    height: min-content;
+    flex: initial;
+}
+
+nav a {
+    font: var(--navbar-font);
+    color: black;
+    text-decoration: none;
+}
+
+#welcome {
+    min-height: 50vh;
+}
+
+#welcome h1 {
+    font: var(--welcome-title-font);
+}
+
+#welcome p {
+    font: var(--welcome-text-font);
+    line-height: var(--welcome-text-line-height);
+    max-width: 800px;
+}
+
+h1 {
+    font: var(--section-title-font);
+}
+
+p a {
+    color: var(--colored-text-color);
+    text-decoration: none;
+}
+
+project-card {
+    font: var(--project-card-font);
+    padding: var(--project-card-padding);
+    border-radius: var(--project-card-border-radius);
+    background: white;
+    display: block;
+}
+
+project-outline {
+    font: var(--project-outline-font);
+    color: var(--colored-text-color);
+}
+
+h2 {
+    font: var(--project-title-font);
+}
+
+project-tag {
+    font: var(--project-tag-font);
+    color: var(--project-tag-text-color);
+    background: var(--project-tag-bg-color);
+    display: inline-block;
+    height: var(--project-tag-height);
+    padding: 0 calc(var(--project-tag-height) / 2);
+    vertical-align: middle;
+    margin-right: var(--project-tag-spacing);
+    display: inline-flex;
+
+}
+
+footer {
+    background: white;
+    width: calc(100% + 2 * var(--side-margin));
+    height: var(--footbar-height);
+    position: relative;
+    left: calc(-1 * var(--side-margin));
+    bottom: 0;
+}
+
 @font-face {
     font-family: MontserratBlack;
     src: url(../ttf/montserrat/black.ttf);
@@ -9,6 +144,11 @@
 }
 
 @font-face {
+    font-family: MontserratSemiBold;
+    src: url(../ttf/montserrat/semi-bold.ttf);
+}
+
+@font-face {
     font-family: MontserratExtraBold;
     src: url(../ttf/montserrat/extra-bold.ttf);
 }
@@ -16,71 +156,4 @@
 @font-face {
     font-family: MontserratRegular;
     src: url(../ttf/montserrat/regular.ttf);
-}
-
-body {
-    margin: 0 auto;
-    padding: 0 70px;
-    padding-top: 200px;
-    max-width: 1440px;
-}
-
-nav {
-    height: 90px;
-    background: white;
-    width: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-nav ul {
-    width: 100%;
-    height: 100%;
-    max-width: 1440px;
-    display: flex;
-    flex-direction: row-reverse;
-    margin: 0 auto;
-    padding: 0;
-    align-items: center;
-}
-
-nav ul li {
-    display: block;
-    position: relative;
-    height: min-content;
-}
-
-nav ul li a {
-    font-size: 20pt;
-    font-family: MontserratRegular;
-    color: black;
-    text-decoration: none;
-    padding-left: 50px;
-}
-
-#bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100vw;
-}
-
-h1 {
-    font-size: 40pt;
-    font-family: MontserratBlack;
-}
-
-p {
-    font-size: 20pt;
-    font-family: MontserratLight;
-    line-height: 34pt;
-    max-width: 800px;
-}
-
-p a {
-    color: #5853F6;
-    text-decoration: none;
-    font-family: MontserratExtraBold;
 }
