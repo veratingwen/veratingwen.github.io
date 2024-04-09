@@ -5,14 +5,17 @@
     --project-tag-bg-color: #F1F1F1;
 
     --side-margin: 70px;
+    --cards-drop-shadow-blur: 20px;
+    --sections-spacing: 140px;
     --navbar-height: 90px;
     --navbar-items-spacing: 50px;
+    --navbar-drop-shadow-y-offset: 4px;
     --welcome-text-line-height: 24pt;
     --project-card-padding: 60px;
     --project-card-border-radius: 30px;
     --project-tag-height: 40px;
     --project-tag-spacing: 16px;
-    --footbar-height: var(--navbar-height);
+    --footer-height: var(--navbar-height);
 
     --navbar-font: 16px MontserratRegular;
     --welcome-title-font: 32px MontserratBlack;
@@ -22,6 +25,12 @@
     --project-title-font: 26px MontserratBlack;
     --project-card-font: 16px  MontserratLight;
     --project-tag-font: 14px MontserratSemiBold;
+
+    --cards-drop-shadow-opacity: 0.1;
+
+    --cards-box-shadow:
+        rgba(0, 0, 0, var(--cards-drop-shadow-opacity))
+        0px 0px var(--cards-drop-shadow-blur);
 }
 
 body {
@@ -37,9 +46,10 @@ nav {
     background: white;
     width: calc(100% - 2 * var(--side-margin));
     padding: 0 var(--side-margin);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
+    box-shadow: var(--cards-box-shadow);
 }
 
 nav ul {
@@ -71,6 +81,10 @@ nav a {
     text-decoration: none;
 }
 
+section {
+    margin-bottom: var(--sections-spacing);
+}
+
 #welcome {
     min-height: 50vh;
 }
@@ -100,6 +114,7 @@ project-card {
     border-radius: var(--project-card-border-radius);
     background: white;
     display: block;
+    box-shadow: var(--cards-box-shadow);
 }
 
 project-outline {
@@ -115,22 +130,24 @@ project-tag {
     font: var(--project-tag-font);
     color: var(--project-tag-text-color);
     background: var(--project-tag-bg-color);
-    display: inline-block;
     height: var(--project-tag-height);
     padding: 0 calc(var(--project-tag-height) / 2);
+    border-radius: var(--project-tag-height);
     vertical-align: middle;
     margin-right: var(--project-tag-spacing);
-    display: inline-flex;
+    display: inline-block;
+    line-height: var(--project-tag-height);
 
 }
 
 footer {
     background: white;
     width: calc(100% + 2 * var(--side-margin));
-    height: var(--footbar-height);
+    height: var(--footer-height);
     position: relative;
     left: calc(-1 * var(--side-margin));
     bottom: 0;
+    box-shadow: var(--cards-box-shadow);
 }
 
 @font-face {
