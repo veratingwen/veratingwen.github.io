@@ -1,176 +1,19 @@
 
-:root {
-    --colored-text-color: #5853F6;
-    --project-tag-text-color: #333333;
-    --project-tag-bg-color: #F1F1F1;
-
-    --side-margin: 70px;
-    --cards-drop-shadow-blur: 20px;
-    --sections-spacing: 140px;
-    --navbar-height: 90px;
-    --navbar-items-spacing: 50px;
-    --navbar-drop-shadow-y-offset: 4px;
-    --welcome-text-line-height: 24pt;
-    --project-card-padding: 60px;
-    --project-card-border-radius: 30px;
-    --project-tag-height: 40px;
-    --project-tag-spacing: 16px;
-    --footer-height: var(--navbar-height);
-
-    --navbar-font: 16px MontserratRegular;
-    --welcome-title-font: 32px MontserratBlack;
-    --welcome-text-font: 16px MontserratLight;
-    --section-title-font: 30px MontserratBlack;
-    --project-outline-font: 16px MontserratExtraBold;
-    --project-title-font: 26px MontserratBlack;
-    --project-card-font: 16px  MontserratLight;
-    --project-tag-font: 14px MontserratSemiBold;
-
-    --cards-drop-shadow-opacity: 0.1;
-
-    --cards-box-shadow:
-        rgba(0, 0, 0, var(--cards-drop-shadow-opacity))
-        0px 0px var(--cards-drop-shadow-blur);
-}
-
 body {
-    margin: 0 auto;
-    padding: 0 var(--side-margin);
-    padding-top: 200px;
+    margin: 0 0;
     background: url(../svg/bg.svg) no-repeat top center;
     background-size: cover;
 }
 
-nav {
-    height: var(--navbar-height);
-    background: white;
-    width: calc(100% - 2 * var(--side-margin));
-    padding: 0 var(--side-margin);
-    position: fixed;
-    top: 0;
-    left: 0;
-    box-shadow: var(--cards-box-shadow);
-}
-
-nav ul {
-    padding: 0 var(--side-margin);
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    padding: 0;
-    column-gap: var(--navbar-items-spacing);
-}
-
-nav ul::before {
-    content: '';
-    display: block;
-    flex: auto;
-}
-
-nav li {
-    display: block;
-    position: relative;
-    height: min-content;
-    flex: initial;
-}
-
-nav a {
-    font: var(--navbar-font);
-    color: black;
-    text-decoration: none;
-}
-
-section {
-    margin-bottom: var(--sections-spacing);
-}
-
-#welcome {
-    min-height: 50vh;
-}
-
-#welcome h1 {
-    font: var(--welcome-title-font);
-}
-
-#welcome p {
-    font: var(--welcome-text-font);
-    line-height: var(--welcome-text-line-height);
-    max-width: 800px;
-}
-
-h1 {
-    font: var(--section-title-font);
-}
-
-p a {
-    color: var(--colored-text-color);
-    text-decoration: none;
-}
-
-project-card {
-    font: var(--project-card-font);
-    padding: var(--project-card-padding);
-    border-radius: var(--project-card-border-radius);
-    background: white;
-    display: block;
-    box-shadow: var(--cards-box-shadow);
-}
-
-project-outline {
-    font: var(--project-outline-font);
-    color: var(--colored-text-color);
-}
-
-h2 {
-    font: var(--project-title-font);
-}
-
-project-tag {
-    font: var(--project-tag-font);
-    color: var(--project-tag-text-color);
-    background: var(--project-tag-bg-color);
-    height: var(--project-tag-height);
-    padding: 0 calc(var(--project-tag-height) / 2);
-    border-radius: var(--project-tag-height);
-    vertical-align: middle;
-    margin-right: var(--project-tag-spacing);
-    display: inline-block;
-    line-height: var(--project-tag-height);
-
-}
-
-footer {
-    background: white;
-    width: calc(100% + 2 * var(--side-margin));
-    height: var(--footer-height);
-    position: relative;
-    left: calc(-1 * var(--side-margin));
-    bottom: 0;
-    box-shadow: var(--cards-box-shadow);
+#coming-soon {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    font: 80px MontserratBlack;
 }
 
 @font-face {
     font-family: MontserratBlack;
     src: url(../ttf/montserrat/black.ttf);
-}
-
-@font-face {
-    font-family: MontserratLight;
-    src: url(../ttf/montserrat/light.ttf);
-}
-
-@font-face {
-    font-family: MontserratSemiBold;
-    src: url(../ttf/montserrat/semi-bold.ttf);
-}
-
-@font-face {
-    font-family: MontserratExtraBold;
-    src: url(../ttf/montserrat/extra-bold.ttf);
-}
-
-@font-face {
-    font-family: MontserratRegular;
-    src: url(../ttf/montserrat/regular.ttf);
 }
