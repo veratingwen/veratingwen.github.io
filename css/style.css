@@ -4,27 +4,30 @@
     --project-tag-text-color: #333333;
     --project-tag-bg-color: #F1F1F1;
 
+    --page-width: 1440px;
     --side-margin: 70px;
     --cards-drop-shadow-blur: 20px;
     --sections-spacing: 140px;
     --navbar-height: 90px;
     --navbar-items-spacing: 50px;
-    --navbar-drop-shadow-y-offset: 4px;
     --welcome-text-line-height: 24pt;
     --project-card-padding: 60px;
     --project-card-border-radius: 30px;
     --project-tag-height: 40px;
     --project-tag-spacing: 16px;
-    --footer-height: var(--navbar-height);
+    --footer-padding-top: 40px;
+    --footer-padding-bottom: 25px;
 
     --navbar-font: 16px MontserratRegular;
     --welcome-title-font: 32px MontserratBlack;
     --welcome-text-font: 16px MontserratLight;
+    --welcome-bold-font: 16px MontserratExtraBold;
     --section-title-font: 30px MontserratBlack;
-    --project-outline-font: 16px MontserratExtraBold;
+    --project-emphasis-font: 16px MontserratExtraBold;
     --project-title-font: 26px MontserratBlack;
     --project-card-font: 16px  MontserratLight;
     --project-tag-font: 14px MontserratSemiBold;
+    --footer-font: 16px MontserratLight;
 
     --cards-drop-shadow-opacity: 0.1;
 
@@ -36,30 +39,22 @@
 body {
     margin: 0 auto;
     padding: 0 var(--side-margin);
-    padding-top: 200px;
+    max-width: var(--page-width);
     background: url(../svg/bg.svg) no-repeat top center;
     background-size: cover;
 }
 
 nav {
     height: var(--navbar-height);
-    background: white;
-    width: calc(100% - 2 * var(--side-margin));
+    margin: 0 auto;
     padding: 0 var(--side-margin);
-    position: fixed;
-    top: 0;
-    left: 0;
-    box-shadow: var(--cards-box-shadow);
+    text-align: right;
+    font: var(--navbar-font);
+    line-height: var(--navbar-height);
 }
 
-nav ul {
-    padding: 0 var(--side-margin);
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    padding: 0;
-    column-gap: var(--navbar-items-spacing);
+nav a:not(:first-child) {
+    margin-left: var(--navbar-items-spacing);
 }
 
 nav ul::before {
@@ -103,12 +98,13 @@ h1 {
     font: var(--section-title-font);
 }
 
-p a {
+#welcome b {
     color: var(--colored-text-color);
-    text-decoration: none;
+    font: var(--welcome-bold-font);
 }
 
-project-card {
+
+proj-card {
     font: var(--project-card-font);
     padding: var(--project-card-padding);
     border-radius: var(--project-card-border-radius);
@@ -117,8 +113,8 @@ project-card {
     box-shadow: var(--cards-box-shadow);
 }
 
-project-outline {
-    font: var(--project-outline-font);
+proj-card b {
+    font: var(--project-emphasis-font);
     color: var(--colored-text-color);
 }
 
@@ -126,7 +122,7 @@ h2 {
     font: var(--project-title-font);
 }
 
-project-tag {
+proj-tag {
     font: var(--project-tag-font);
     color: var(--project-tag-text-color);
     background: var(--project-tag-bg-color);
@@ -141,13 +137,23 @@ project-tag {
 }
 
 footer {
-    background: white;
-    width: calc(100% + 2 * var(--side-margin));
-    height: var(--footer-height);
+    font: var(--footer-font);
+    padding-top: var(--footer-padding-top);
+    padding-bottom: var(--footer-padding-bottom);
     position: relative;
-    left: calc(-1 * var(--side-margin));
-    bottom: 0;
+}
+
+footer::before {
+    content: '';
+    display: block;
     box-shadow: var(--cards-box-shadow);
+    background: white;
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    left: calc(50% - 50vw);
+    top: 0;
+    z-index: -1;
 }
 
 @font-face {
