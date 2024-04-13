@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="217px" viewBox="0 0 512 217" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="A4备份" transform="translate(-166.000000, -190.000000)">
+            <g id="编组" transform="translate(166.000000, 190.000000)">
+                <text id="交" font-family="PingFangSC-Regular, PingFang SC" font-size="99" font-weight="normal" fill="#000000">
+                    <tspan x="56.255625" y="105.404297">交</tspan>
+                </text>
+                <text id="互" font-family="PingFangSC-Semibold, PingFang SC" font-size="99" font-weight="500" fill="#FF0000">
+                    <tspan x="155.255625" y="105.404297">互</tspan>
+                </text>
+                <text id="未来" font-family="PingFangSC-Regular, PingFang SC" font-size="99" font-weight="normal" fill="#000000">
+                    <tspan x="254.255625" y="105.404297">未来</tspan>
+                </text>
+                <text id="Invent-&amp;-Benefit" font-family="Arial-ItalicMT, Arial" font-size="72" font-style="italic" font-weight="normal" letter-spacing="-0.0503999982" fill="#000000">
+                    <tspan x="0.421875" y="198.3125">I</tspan>
+                    <tspan x="20.3753813" y="198.3125" letter-spacing="-0.0935999975">n</tspan>
+                    <tspan x="60.32475" y="198.3125">v</tspan>
+                    <tspan x="96.32475" y="198.3125" letter-spacing="-0.0935999975">en</tspan>
+                    <tspan x="176.223488" y="198.3125">t </tspan>
+                    <tspan x="216.1305" y="198.3125" letter-spacing="0.0720000006">&amp;</tspan>
+                    <tspan x="264.225938" y="198.3125"> </tspan>
+                    <tspan x="284.179444" y="198.3125" letter-spacing="0.0720000006">B</tspan>
+                    <tspan x="332.274881" y="198.3125" letter-spacing="-0.0935999975">ene</tspan>
+                    <tspan x="452.122988" y="198.3125">f</tspan>
+                    <tspan x="472.076494" y="198.3125" letter-spacing="0.0503999982">i</tspan>
+                    <tspan x="488.122988" y="198.3125">t</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
