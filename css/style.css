@@ -4,8 +4,8 @@
     --project-tag-text-color: #333333;
     --project-tag-bg-color: #F1F1F1;
 
-    --page-width: 1440px;
-    --side-margin: 70px;
+    --max-page-width: 1440px;
+    --min-side-margin: 70px;
     --page-change-transition-time: 1s ease;
     --back-button-size: 70px;
     --back-button-margin: 20px;
@@ -69,14 +69,20 @@
     --footer-font: 16px MontserratLight;
 
     scroll-behavior: smooth;
+
+    --side-margin: max(
+        calc(50vw - var(--max-page-width) / 2 + var(--min-side-margin)),
+        var(--min-side-margin)
+    );
+
+    --page-width: calc(100vw - var(--side-margin) * 2);
 }
 
 body {
-    margin: 0 auto;
-    padding: 0 var(--side-margin);
-    max-width: var(--page-width);
+    margin: 0;
     background: url(../svg/bg.svg) no-repeat top center;
     background-size: cover;
+    font-family: Montserrat;
 }
 
 body > section {
@@ -113,6 +119,8 @@ progress-bar {
 header {
     height: var(--navbar-height);
     margin: 0 auto;
+    padding: 0 var(--min-side-margin);
+    max-width: var(--max-page-width);
     margin-bottom: calc(var(--navbar-height) * -1);
     text-align: right;
     font: var(--navbar-font);
@@ -139,18 +147,434 @@ header a {
 
 /* --- UVU PROJECT PAGE ----------------------------------------------------- */
 
-#uvu {
-    opacity: 1;
+:root {
+    --uvu-accent-color-rgb: 255, 138, 0;
+    --uvu-accent-color: rgb(var(--uvu-accent-color-rgb));
+    --uvu-accent-color-2: #fffcf6;
 }
 
-#uvu:not(:target) {
+#uvu {
     position: absolute;
     opacity: 0;
     display: none;
 }
 
-#uvu:not(:target) + footer .back.uvu {
+#uvu:target {
+    display: unset;
+    position: unset;
+    opacity: 1;
+}
+
+#uvu > hgroup:first-of-type {
+    padding-bottom: 50px;
+    padding-top: 140px;
+    padding-left: var(--min-side-margin);
+    padding-right: var(--min-side-margin);
+    background: var(--uvu-accent-color-2);
+    margin-top: 0;
+}
+
+#uvu h1 {
+    color: var(--uvu-accent-color);
+    font: var(--uvu-title-font);
+    text-align: center;
+    font: 32px MontserratBlack;
+    margin: 0;
+}
+
+/* video iframe */
+#uvu > iframe:first-of-type {
+    --video-width: min(
+        1111px,
+        calc(100vw - var(--side-margin) * 2)
+    );
+    --video-height-to-width-ratio: 624 / 1111;
+    --video-height: calc(var(--video-width) * var(--video-height-to-width-ratio));
+    --video-side-margin: calc(50vw - var(--video-width) / 2);
+
+    width: var(--video-width);
+    height: var(--video-height);
+
+    background: white;
+    border-top: 40px solid white;
+    border-bottom: 40px solid white;
+    border-left: var(--video-side-margin) solid white;
+    border-right: var(--video-side-margin) solid white;
+}
+
+#uvu .project_overview {
+    margin-top: -5px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: var(--side-margin);
+    padding-right: var(--side-margin);
+    background-color: var(--uvu-accent-color-2);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 40px;
+    color: #4B3300;
+}
+
+@media (max-width: 700px) {
+    #uvu .project_overview {
+        display: block;
+    }
+    #uvu .project_overview aside {
+        margin-top: 40px;
+    }
+}
+
+#uvu .project_overview > h3,
+#uvu .project_overview > p {
+    grid-column: 1 / 2;
+    margin-bottom: 0;
+}
+
+
+#uvu .project_overview h2 {
+    font: 26px MontserratBlack;
+    color: var(--uvu-accent-color);
+    text-align: center;
+    grid-column: 1 / 3;
+}
+
+#uvu .project_overview aside {
+    grid-column: 2 / 3;
+    grid-row-start: 2;
+    grid-row-end: 999;
+}
+
+#uvu .project_overview h3 {
+    font: 22px MontserratBlack;
+    line-height: 40px;
+    margin-bottom: 1px;
+}
+
+#uvu .project_overview p {
+    font: 16px MontserratLight;
+    line-height: 26px;
+    max-width: 650px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#uvu .project_overview em {
+    font: 16px MontserratBold;
+    color: var(--uvu-accent-color);
+    font-style: normal;
+}
+
+#uvu .project_overview h4 {
+    font: 18px MontserratBlack;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+
+#uvu .project_overview aside p {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+#uvu .design_process {
+    background: #FCFCFC;
+    padding: 40px var(--side-margin);
+}
+
+#uvu .design_process h2 {
+    font: 26px MontserratBlack;
+    color: var(--uvu-accent-color);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+#uvu .design_process ol {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    text-align: center;
+    list-style-position: inside;
+    color: rgba(0, 0, 0, .5);
+    font: 14px MontserratLight;
+    line-height: 34px;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 1280px) {
+    #uvu .design_process ol {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 800px) {
+    #uvu .design_process ol {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+#uvu .design_process ol > li {
+    position: relative;
+}
+
+#uvu .design_process ol > li::marker {
+    content: counter(list-item);
+}
+
+#uvu .design_process ol > li > img {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%) translateY(-50%);
+    pointer-events: none;
+    user-select: none;
+}
+
+#uvu .design_process ol > li > em {
+    margin-left: 12px;
+}
+
+#uvu .design_process ol > li::marker,
+#uvu .design_process ol em {
+    font: 20px MontserratBlack;
+    line-height: 39px;
+    color: var(--accent-color);
+    position: relative;
+}
+
+#uvu .design_process ol,
+#uvu .design_process ul {
+    padding: 0;
+}
+
+#uvu .design_process ol ul {
+    margin-top: 14px;
+}
+
+#uvu .design_process ol ul li {
+    list-style: none;
+}
+
+#uvu .further_research {
+    background: white;
+    color: #4B3300;
+    padding: 40px var(--side-margin);
+    font: 16px MontserratLight;
+    line-height: 24px;
+}
+
+#uvu .further_research h2 {
+    font: 26px MontserratBlack;
+    color: var(--uvu-accent-color);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+#uvu .further_research > div {
+    display: grid;
+    gap: 30px;
+}
+
+@media (max-width: 1280px) {
+    #uvu .further_research > div {
+        grid-template-columns: 1fr !important;
+    }
+
+    #uvu .further_research > div > section {
+        grid-row: unset !important;
+        grid-column: unset !important;
+    }
+}
+
+#uvu .further_research > div:not(:first-of-type) {
+    margin-top: 30px;
+}
+
+#uvu .further_research section {
+    border-radius: 20px;
+    padding: 36px;
+}
+
+#uvu .further_research h3 {
+    font: 50px MontserratBlack;
+    line-height: 40px;
+    opacity: 0.2;
+    margin-top: -0.5em;
+    margin-left: -0.5ch;
+    margin-bottom: 32px;
+}
+
+#uvu .further_research b {
+    font-family: MontserratBold;
+}
+
+#uvu .further_research h4 {
+    font: 22px MontserratBlack;
+    line-height: 40px;
+    margin-bottom: 12px;
+}
+
+#uvu .further_research h4 + p {
+    margin-top: 0;
+}
+
+#uvu .further_research section figure {
+    width: 100%;
+    max-width: 720px;
+    margin: 20px auto;
+}
+
+#uvu .further_research section figure img {
+    width: 100%;
+}
+
+#uvu .further_research section [data-legend-markers] {
+    display: grid;
+    grid-template-columns: min-content max-content min-content max-content;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+#uvu .further_research section [data-legend-markers] dt {
+    text-indent: -9999px;
+    width: .7em;
+    height: .7em;
+    background: var(--color);
+    margin-top: .4em;
+}
+
+#uvu .further_research section [data-legend-markers="round"] dt {
+    border-radius: 50%;
+}
+
+#uvu .further_research section [data-legend-markers] dd {
+    margin-left: 1ch;
+    margin-right: 1ch;
+}
+
+#uvu .further_research section small {
+    font-size: 15px;
+    display: block;
+}
+
+uvu-journeys-chart {
+    display: grid;
+    margin-top: 23px;
+    margin-bottom: 23px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 23px;
+}
+
+@media (min-width: 800px) and (max-width: 1280px) {
+    uvu-journeys-chart {
+        grid-template-columns: unset;
+        grid-auto-flow: column;
+    }
+}
+
+#uvu .further_research h5 {
+    font: 16px MontserratSemiBold;
+    line-height: 20px;
+    margin: 0;
+    text-align: center;
+}
+
+#uvu .further_research em {
+    color: var(--uvu-accent-color);
+    font-family: MontserratBold;
+    font-style: normal;
+}
+
+#uvu .further_research em b {
+    font-family: MontserratBlack;
+}
+
+#uvu .primary_research {
+    background: white;
+    color: #4B3300;
+    padding: 40px var(--side-margin);
+    align-items: center;
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    gap: 40px;
+    grid-auto-flow: dense;
+}
+
+#uvu .primary_research h3 {
+    font: 50px MontserratBlack;
+    line-height: 40px;
+    opacity: 0.2;
+    margin-top: -0.5em;
+    margin-left: -0.5ch;
+    grid-column: span 3;
+}
+
+#uvu .primary_research > img {
+    width: calc(var(--page-width) - 720px);
+    max-width: 470px;
+    min-width: 200px;
+
+    height: calc(var(--page-width) * 0.2);
+    min-height: 200px;
+    max-height: 280px;
+    border-radius: 22px;
+    object-fit: cover;
+}
+
+#uvu .primary_research > img:nth-of-type(2n) {
+    grid-column: 3 / 4;
+}
+
+#uvu .primary_research hgroup {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    padding: 0 40px;
+    grid-column: span 2;
+}
+
+@media (max-width: 1280px) {
+    #uvu .primary_research hgroup {
+        background-size: 100% 90%;
+    }
+}
+
+@media (max-width: 960px) {
+    #uvu .primary_research hgroup {
+        padding: 0;
+    }
+}
+
+@media (max-width: 720px) {
+    #uvu .primary_research hgroup {
+        background-image: none !important;
+    }
+}
+
+#uvu .primary_research h4 {
+    font-weight: 900;
+    font-size: 18px;
+}
+
+#uvu .primary_research p {
+    line-height: 24px;
+}
+
+#uvu .primary_research em {
+    font-weight: bold;
+    font-style: normal;
+    color: var(--uvu-accent-color);
+}
+
+#uvu:not(:target) ~ footer .back.uvu {
     display: none;
+}
+
+#uvu:target ~ progress-bar {
+    background: var(--uvu-accent-color);
 }
 
 /* --- / UVU PROJECT PAGE --------------------------------------------------- */
@@ -162,14 +586,19 @@ header a {
     opacity: 1;
 }
 
-:target + #home {
+:target ~ #home {
     position: absolute;
     opacity: 0;
     display: none;
 }
 
-:target + footer .back.home {
+:target ~ footer .back.home {
     display: none;
+}
+
+#home > section {
+    max-width: var(--max-page-width);
+    margin: 0 var(--side-margin);
 }
 
 #home section:not(#welcome) {
@@ -420,6 +849,8 @@ interest-card p {
 footer {
     padding-top: var(--footer-padding-top);
     padding-bottom: var(--footer-padding-bottom);
+    padding-left: var(--side-margin);
+    padding-right: var(--side-margin);
     position: relative;
     word-break: break-all;
 }
@@ -447,7 +878,7 @@ footer small:first-of-type {
 
 footer small:last-of-type {
     position: absolute;
-    right: 0;
+    right: var(--side-margin);
     top: 50%;
     transform: translateY(-50%);
 }
@@ -479,13 +910,8 @@ footer .back {
     animation-timeline: --footer-y;
     animation-range: entry-crossing 0% entry-crossing 100%;
 
-    --right-unfixed-position-wide-screen:
-        calc((var(--page-width) - 100vw) / 2 + var(--back-button-margin));
-    --right-unfixed-position-narrow-screen:
-        calc(var(--back-button-margin) - var(--side-margin));
     --right-unfixed-position:
-        min(var(--right-unfixed-position-wide-screen),
-            var(--right-unfixed-position-narrow-screen));
+        var(--back-button-margin);
 }
 
 @keyframes back-btn-bottom-margin {
@@ -501,6 +927,33 @@ footer .back {
 
 /** ------------------------------------------------------------------------ **/
 
+@font-face {
+    font-family: Montserrat;
+    font-weight: 900;
+    font-style: normal;
+    src: url(../ttf/montserrat/black.ttf);
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-style: normal;
+    src: url(../ttf/montserrat/bold.ttf);
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-style: normal;
+    src: url(../ttf/montserrat/bold.ttf);
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-weight: 300;
+    font-style: normal;
+    src: url(../ttf/montserrat/light.ttf);
+}
 
 @font-face {
     font-family: MontserratBlack;
@@ -529,5 +982,19 @@ footer .back {
 
 @font-face {
     font-family: MontserratRegular;
+    src: url(../ttf/montserrat/regular.ttf);
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: normal;
+    src: url(../ttf/montserrat/regular.ttf);
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-weight: normal;
+    font-style: normal;
     src: url(../ttf/montserrat/regular.ttf);
 }
