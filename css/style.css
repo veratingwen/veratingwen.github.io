@@ -1,10 +1,14 @@
 :root {
-    --colored-text-color: #5853F6;
+    --home-accent-color-rgb: 91, 85, 246;
+    --home-accent-color: rgb(var(--home-accent-color-rgb));
     --project-tag-text-color: #333333;
     --project-tag-bg-color: #F1F1F1;
 
     --page-width: 1440px;
     --side-margin: 70px;
+    --page-change-transition-time: 1s ease;
+    --back-button-size: 70px;
+    --back-button-margin: 20px;
 
     --sub-section-title-font: 30px MontserratBlack;
     --sub-section-spacing: 140px;
@@ -14,6 +18,8 @@
     --cards-box-shadow:
         rgba(0, 0, 0, var(--cards-drop-shadow-opacity))
         0px 0px var(--cards-drop-shadow-blur);
+
+    --progress-bar-height: 4px;
 
     --navbar-font: 16px MontserratRegular;
     --navbar-height: 90px;
@@ -60,8 +66,9 @@
 
     --footer-padding-top: 40px;
     --footer-padding-bottom: 25px;
-    --footer-height: 60px;
     --footer-font: 16px MontserratLight;
+
+    scroll-behavior: smooth;
 }
 
 body {
@@ -72,6 +79,37 @@ body {
     background-size: cover;
 }
 
+body > section {
+    transition:
+        opacity var(--page-change-transition-time),
+        display var(--page-change-transition-time) allow-discrete;
+}
+
+a {
+    text-decoration: none;
+}
+
+progress-bar {
+    width: 0%;
+    height: var(--progress-bar-height);
+    background: var(--home-accent-color);
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    animation: progress-bar;
+    animation-timeline: scroll(root);
+}
+
+@keyframes progress-bar {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
 header {
     height: var(--navbar-height);
     margin: 0 auto;
@@ -79,6 +117,8 @@ header {
     text-align: right;
     font: var(--navbar-font);
     line-height: var(--navbar-height);
+    position: relative;
+    z-index: 1;
 }
 
 header a:not(:first-child) {
@@ -97,11 +137,40 @@ header a {
     text-decoration: none;
 }
 
-section section:not(#welcome) {
+#uvu {
+    opacity: 1;
+}
+
+#uvu:not(:target) {
+    position: absolute;
+    opacity: 0;
+    display: none;
+}
+
+#uvu:not(:target) + footer .back.uvu {
+    display: none;
+}
+
+#home {
+    position: relative;
+    opacity: 1;
+}
+
+:target + #home {
+    position: absolute;
+    opacity: 0;
+    display: none;
+}
+
+:target + footer .back.home {
+    display: none;
+}
+
+#home section:not(#welcome) {
     padding-top: var(--sub-section-spacing);
 }
 
-section section:last-of-type {
+#home section:last-of-type {
     padding-bottom: var(--sub-section-spacing);
 }
 
@@ -126,12 +195,12 @@ section section:last-of-type {
     vertical-align: middle;
 }
 
-h1 {
+#home h1 {
     font: var(--sub-section-title-font);
 }
 
 #welcome em {
-    color: var(--colored-text-color);
+    color: var(--home-accent-color);
     font: var(--welcome-bold-font);
 }
 
@@ -141,6 +210,7 @@ proj-card {
     padding-right: calc(var(--project-card-padding) * 2 + var(--project-cover-width));
     border-radius: var(--project-card-border-radius);
     background: white;
+    color: black;
     display: block;
     box-shadow: var(--cards-box-shadow);
     position: relative;
@@ -158,7 +228,7 @@ proj-card {
 
 proj-card:hover {
     cursor: pointer;
-    border-color: var(--colored-text-color);
+    border-color: var(--home-accent-color);
 }
 
 proj-cover {
@@ -194,10 +264,10 @@ proj-cover img {
 
 proj-card em {
     font: var(--project-emphasis-font);
-    color: var(--colored-text-color);
+    color: var(--home-accent-color);
 }
 
-h2 {
+#home h2 {
     margin: var(--project-title-vertical-margin) 0;
     font: var(--project-title-font);
 }
@@ -238,7 +308,7 @@ proj-card > img:last-of-type {
 
 proj-card > small:last-of-type {
     font: var(--project-type-font);
-    color: var(--colored-text-color);
+    color: var(--home-accent-color);
 }
 
 interest-grid {
@@ -377,6 +447,52 @@ footer small:last-of-type {
 footer a img {
     margin-top: 10px;
 }
+
+footer .back {
+    background: url(../svg/back.svg);
+    background-size: cover;
+    width: var(--back-button-size);
+    height: var(--back-button-size);
+    position: fixed;
+    right: var(--back-button-margin);
+    bottom: var(--back-button-margin);
+    z-index: 1;
+    filter: drop-shadow(0px 0px 5px rgba(var(--home-accent-color-rgb), 0.5));
+}
+
+/** -- Change of position of back button when scrolling arrives to footer -- **/
+
+footer {
+    view-timeline: --footer-y y;
+}
+
+footer .back {
+    animation: back-btn-bottom-margin;
+    animation-timeline: --footer-y;
+    animation-range: entry-crossing 0% entry-crossing 100%;
+
+    --right-unfixed-position-wide-screen:
+        calc((var(--page-width) - 100vw) / 2 + var(--back-button-margin));
+    --right-unfixed-position-narrow-screen:
+        calc(var(--back-button-margin) - var(--side-margin));
+    --right-unfixed-position:
+        min(var(--right-unfixed-position-wide-screen),
+            var(--right-unfixed-position-narrow-screen));
+}
+
+@keyframes back-btn-bottom-margin {
+    0% {
+        position: fixed;
+    }
+    0.000001%, 100% {
+        position: absolute;
+        bottom: calc(100% + var(--back-button-margin));
+        right: var(--right-unfixed-position);
+    }
+}
+
+/** ------------------------------------------------------------------------ **/
+
 
 @font-face {
     font-family: MontserratBlack;
