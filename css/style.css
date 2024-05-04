@@ -137,6 +137,8 @@ header a {
     text-decoration: none;
 }
 
+/* --- UVU PROJECT PAGE ----------------------------------------------------- */
+
 #uvu {
     opacity: 1;
 }
@@ -150,6 +152,10 @@ header a {
 #uvu:not(:target) + footer .back.uvu {
     display: none;
 }
+
+/* --- / UVU PROJECT PAGE --------------------------------------------------- */
+
+/* --- HOME PAGE ------------------------------------------------------------ */
 
 #home {
     position: relative;
@@ -408,6 +414,8 @@ interest-card p {
     margin-bottom: 0;
     line-height: var(--interest-description-line-height);
 }
+
+/* --- / HOME PAGE ---------------------------------------------------------- */
 
 footer {
     padding-top: var(--footer-padding-top);
