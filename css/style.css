@@ -693,6 +693,244 @@ uvu-journeys-chart {
     gap: 16px;
 }
 
+#uvu section.empathise {
+    background-color: #FFB923;
+    padding: 40px var(--side-margin);
+    display: grid;
+    grid-template-columns: min-content min-content 1fr;
+    position: relative;
+}
+
+#uvu section.empathise::before,
+#uvu section.empathise::after {
+    content: "";
+    display: block;
+    width: 257px;
+    height: 136px;
+    background: url(../svg/uvu/car-bg-icon.svg) no-repeat;
+}
+
+#uvu section.empathise::before {
+    position: absolute;
+    right: calc(var(--side-margin) - 90px);
+    top: 180px;
+}
+
+#uvu section.empathise::after {
+    position: absolute;
+    left: calc(var(--side-margin) - 90px);
+    bottom: 90px;
+}
+
+@media (max-width: 1000px) {
+    #uvu section.empathise {
+        grid-template-columns: min-content 1fr;
+    }
+}
+
+#uvu section.empathise h2 {
+    color: white;
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 40px;
+    text-align: center;
+    grid-column: span 3;
+}
+
+@media (max-width: 1000px) {
+    #uvu section.empathise h2 {
+        grid-column: span 2;
+    }
+}
+
+#uvu section.empathise h3 {
+    color: white;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 40px;
+    grid-column: span 3;
+}
+
+@media (max-width: 1000px) {
+    #uvu section.empathise h3 {
+        grid-column: span 2;
+    }
+}
+
+#uvu section.empathise figure {
+    margin: 0;
+    border-radius: 19px;
+    position: relative;
+    z-index: 1;
+}
+
+#uvu section.empathise figure.persona {
+    background: #FF7C17;
+    width: 300px;
+    height: 455px;
+    text-align: center;
+    color: white;
+    position: relative;
+    grid-row: span 2;
+    margin-bottom: 40px;
+    margin: 0;
+    margin-right: 60px;
+    align-self: center;
+}
+
+@media (max-width: 1280px) {
+    #uvu section.empathise figure.persona {
+        margin-right: 40px;
+    }
+}
+
+#uvu section.empathise figure.persona img {
+    width: 150px;
+    background: white;
+    border-radius: 50%;
+    padding: 10px;
+    margin-top: 40px;
+}
+
+#uvu section.empathise figure.persona h4 {
+    font-weight: 900;
+    font-size: 20px;
+}
+
+#uvu section.empathise figure.persona h5 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+    margin-bottom: 7px;
+}
+
+#uvu section.empathise figure.persona aside {
+    font-weight: 700;
+    font-size: 14px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+
+#uvu section.empathise figure.persona aside em {
+    font-size: 36px;
+    font-weight: 300;
+    font-style: normal;
+    display: block;
+}
+
+#uvu section.empathise figure.motivations {
+    background: white;
+    padding: 40px 23px;
+}
+
+#uvu section.empathise figure.motivations h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+#uvu section.empathise figure.motivations label {
+    margin-top: 24px;
+    display: block;
+}
+
+#uvu section.empathise figure.motivations progress {
+    width: 220px;
+    height: 12px;
+    border-radius: 14px;
+    overflow: hidden;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+@media (max-width: 1000px) {
+    #uvu section.empathise figure.motivations {
+        width: min-content;
+    }
+}
+
+#uvu section.empathise figure.motivations ::-webkit-progress-value {
+    background-color: #FF7C17;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#uvu section.empathise figure.motivations ::-moz-progress-bar {
+    /** Need to duplicate the same rules of ::-webkit-progress-value because for
+    some reason Chromim refuses to accept a selector that includes both
+    ::-webkit-progress-value and ::-moz-progress-bar separated by a comma **/
+    background-color: #FF7C17;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#uvu section.empathise figure.motivations ::-webkit-progress-bar {
+    background-color: rgba(217, 217, 217, 0.50);
+}
+
+#uvu section.empathise figure.quote {
+    background: #F6EAD1;
+    margin: 0;
+    margin-left: 100px;
+    margin-bottom: 27px;
+    height: min-content;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 900;
+    align-self: end;
+}
+
+@media (max-width: 1280px) {
+    #uvu section.empathise figure.quote {
+        margin-left: 40px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #uvu section.empathise figure.quote {
+        margin-left: 0;
+        margin-top: 40px;
+        margin-bottom: 0;
+    }
+}
+
+#uvu section.empathise blockquote {
+    margin: 60px;
+}
+
+#uvu section.empathise figure.personality {
+    grid-column: span 2;
+    background-color: white;
+    padding: 45px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 300;
+    margin-left: 58px;
+    margin-right: 58px;
+    margin-top: 52px;
+    height: min-content;
+    margin-bottom: 28px;
+}
+
+@media (max-width: 1280px) {
+    #uvu section.empathise figure.personality {
+        margin-top: 40px;
+    }
+}
+
+#uvu section.empathise figure.personality h4 {
+    font-size: 18px;
+    font-weight: 900;
+    margin: 0;
+}
+
+#uvu section.empathise figure.personality p {
+    margin-bottom: 0;
+}
+
 #uvu:not(:target) ~ footer .back.uvu {
     display: none;
 }
@@ -1086,6 +1324,12 @@ footer .back {
 
 @font-face {
     font-family: MontserratLight;
+    src: url(../ttf/montserrat/light.ttf);
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-weight: 300;
     src: url(../ttf/montserrat/light.ttf);
 }
 
