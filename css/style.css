@@ -931,6 +931,193 @@ uvu-journeys-chart {
     margin-bottom: 0;
 }
 
+#uvu section.storyboard {
+    --uvu-sb-columns: 4;
+    --uvu-sb-cell-max-width: 400px;
+
+    --uvu-sb-cell-width: min(
+        calc(var(--page-width) / var(--uvu-sb-columns)),
+        var(--uvu-sb-cell-max-width)
+    );
+    --uvu-sb-cell-height-ratio: 214.5 / 246.8;
+    --uvu-sb-cell-height: calc(var(--uvu-sb-cell-height-ratio) * var(--uvu-sb-cell-width));
+    --uvu-sb-grid-width: calc(var(--uvu-sb-cell-width) * var(--uvu-sb-columns));
+    --uvu-sb-grid-side-margin: calc((var(--page-width) - var(--uvu-sb-grid-width)) / 2);
+    --uvu-sb-grid-border-width: 3px;
+
+    background: white;
+    color: #4B3300;
+    padding: 40px calc(var(--side-margin) + var(--uvu-sb-grid-side-margin));
+    padding-top: 90px;
+    display: grid;
+    grid-template-columns: repeat(var(--uvu-sb-columns), 1fr);
+    position: relative;
+    gap: var(--uvu-sb-grid-border-width);
+}
+
+@media (max-width: 1280px) {
+    #uvu section.storyboard {
+        --uvu-sb-columns: 3;
+    }
+}
+
+@media (max-width: 1000px) {
+    #uvu section.storyboard {
+        --uvu-sb-columns: 2;
+    }
+}
+
+@media (max-width: 720px) {
+    #uvu section.storyboard {
+        --uvu-sb-columns: 1;
+    }
+}
+
+#uvu section.storyboard h3 {
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 40px;
+    position: absolute;
+    margin: 0;
+    top: 40px;
+    left: var(--side-margin);
+}
+
+#uvu section.storyboard::before {
+    display: block;
+    content: "";
+    position: absolute;
+    width: calc(var(--uvu-sb-grid-width) - var(--uvu-sb-grid-border-width));
+    height: calc(100% - 130px - var(--uvu-sb-grid-border-width));
+    top: 90px;
+    left: calc(var(--side-margin) + var(--uvu-sb-grid-side-margin));
+    z-index: 1;
+    border: var(--uvu-sb-grid-border-width) solid #4B3300;
+    box-shadow: 0 0 0 10px white;
+    border-radius: 10px;
+    user-select: none;
+    pointer-events: none;
+}
+
+#uvu section.storyboard figure {
+    width: 100%;
+    max-width: var(--uvu-sb-cell-max-width);
+    height: var(--uvu-sb-cell-height);
+    position: relative;
+    outline: var(--uvu-sb-grid-border-width) solid #4B3300;
+    margin: 0;
+    display: block;
+    overflow: hidden;
+    background: white;
+}
+
+#uvu section.storyboard figure img {
+    image-rendering: crisp-edges;
+}
+
+#uvu section.storyboard img.left {
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+#uvu section.storyboard img.right {
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+#uvu section.storyboard img.top {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#uvu section.storyboard img.bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#uvu section.storyboard img.bottom-left {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#uvu section.storyboard figcaption h5 {
+    font-weight: 800;
+    margin: 0;
+    font-size: 22px;
+    line-height: 25px;
+    margin-bottom: 2px;
+    background-color: white;
+    display: inline;
+}
+
+#uvu section.storyboard figcaption h5::after {
+    content: "";
+    display: block;
+}
+
+#uvu section.storyboard figcaption p {
+    margin: 0;
+    display: inline;
+    background-color: white;
+}
+
+#uvu section.storyboard figcaption.left {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+}
+
+#uvu section.storyboard figcaption.right {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+}
+
+#uvu section.storyboard figcaption.top {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translateX(-50%);
+}
+
+#uvu section.storyboard figcaption.top-right {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+}
+
+#uvu section.storyboard figcaption.bottom {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+}
+
+#uvu section.storyboard figcaption.horizontal-flow {
+    padding-left: 40px;
+}
+
+#uvu section.storyboard figcaption.horizontal-flow h5 {
+    position: absolute;
+    left: 0;
+}
+
 #uvu:not(:target) ~ footer .back.uvu {
     display: none;
 }
@@ -1345,6 +1532,12 @@ footer .back {
 
 @font-face {
     font-family: MontserratExtraBold;
+    src: url(../ttf/montserrat/extra-bold.ttf);
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-weight: 800;
     src: url(../ttf/montserrat/extra-bold.ttf);
 }
 
