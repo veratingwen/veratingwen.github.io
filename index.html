@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/root.css">
+<link rel="stylesheet" href="css/home.css">
+
+<!-- https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery#example -->
+<noscript id="deferred-styles">
+    <link rel="stylesheet" href="css/uvu.css">
+</noscript>
+<script>
+    requestAnimationFrame(() => {
+        const styles = document.getElementById('deferred-styles');
+        const template = document.createElement('template');
+        template.innerHTML = styles.innerHTML;
+        document.head.appendChild(template.content);
+    });
+</script>
 
 <header>
     <a href="#wip-projects">Works</a>
