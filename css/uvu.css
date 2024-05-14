@@ -972,6 +972,44 @@ uvu-journeys-chart {
     left: 0;
 }
 
+#uvu section.insights {
+    background: #FCFCFC;
+    padding: 40px var(--side-margin);
+}
+
+#uvu section.insights h3 {
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 40px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#uvu section.insights ul {
+    column-gap: 80px;
+    row-gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    color: #4B3300;
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+@media (max-width: 1050px) {
+    #uvu section.insights ul {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+#uvu section.insights ul h4 {
+    font-weight: 700;
+}
+
+#uvu section.insights ul p {
+    line-height: 1.5em;
+}
+
 #uvu:not(:target) ~ footer .back.uvu {
     display: none;
 }
