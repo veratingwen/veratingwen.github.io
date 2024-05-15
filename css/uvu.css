@@ -1010,6 +1010,101 @@ uvu-journeys-chart {
     line-height: 1.5em;
 }
 
+#uvu section.ideate {
+    background: white;
+    padding: 40px var(--side-margin);
+    color: #4B3300;
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    column-gap: 40px;
+    line-height: 26px;
+    font-size: 16px;
+}
+
+@media (max-width: 1050px) {
+    #uvu section.ideate {
+        grid-template-columns: 1fr;
+    }
+}
+
+#uvu section.ideate h2 {
+    text-align: center;
+    font-size: 26px;
+    line-height: 40px;
+    margin: 0;
+    color: var(--uvu-accent-color);
+    font-weight: 900;
+    grid-column: span 2;
+}
+
+@media (max-width: 1050px) {
+    #uvu section.ideate h2 {
+        grid-column: unset;
+    }
+}
+
+#uvu section.ideate h3 {
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 40px;
+    margin: 0;
+    margin-bottom: 14px;
+}
+
+#uvu section.ideate p {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#uvu section.ideate dl {
+    margin: 0;
+}
+
+#uvu section.ideate dt {
+    font-weight: 700;
+    display: inline;
+}
+
+#uvu section.ideate dt::before {
+    content: "•";
+    margin-left: 1ch;
+    margin-right: 1ch;
+}
+
+#uvu section.ideate dt::after {
+    content: ": ";
+}
+
+#uvu section.ideate dd {
+    display: inline;
+    margin: 0;
+}
+
+#uvu section.ideate dd::after {
+    content: "";
+    display: block;
+}
+
+#uvu section.ideate img {
+    width: 800px;
+    max-width: calc(var(--page-width) * .6);
+    grid-column: 2 / 3;
+    grid-row: span 999;
+    align-self: center;
+    margin: 0 auto;
+}
+
+@media (max-width: 1050px) {
+    #uvu section.ideate img {
+        width: 600px;
+        max-width: calc(var(--page-width) - 80px);
+        grid-column: unset;
+        grid-row: unset;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
 #uvu:not(:target) ~ footer .back.uvu {
     display: none;
 }
