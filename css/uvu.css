@@ -1105,6 +1105,19 @@ uvu-journeys-chart {
     }
 }
 
+#uvu section.design_conception {
+    background: #333;
+    padding: 40px var(--side-margin);
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr min-content 1fr min-content 1fr min-content 1fr 1fr;
+    grid-template-areas:
+        "title title title title title title title title title"
+        "space space image plus  image plus  image space space"
+        "space space arrow space arrow space arrow space space"
+        "space graph graph graph graph graph graph graph space";
+}
+
 #uvu:not(:target) ~ footer .back.uvu {
     display: none;
 }
