@@ -1111,12 +1111,30 @@ uvu-journeys-chart {
     color: white;
     display: grid;
     grid-template-columns: 1fr 1fr min-content 1fr min-content 1fr min-content 1fr 1fr;
-    grid-template-areas:
-        "title title title title title title title title title"
-        "space space image plus  image plus  image space space"
-        "space space arrow space arrow space arrow space space"
-        "space graph graph graph graph graph graph graph space";
 }
+
+#uvu section.design_conception h3 {
+    grid-column: span 9;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 40px;
+    margin: 0;
+}
+
+#uvu section.design_conception > figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#uvu section.design_conception > figure img {
+    width: 100%;
+}
+
+#uvu section.design_conception > figure:nth-of-type(1) {
+    grid-column: 3 / 4;
+}
+
 
 #uvu:not(:target) ~ footer .back.uvu {
     display: none;
