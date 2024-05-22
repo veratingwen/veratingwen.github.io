@@ -1106,19 +1106,36 @@ uvu-journeys-chart {
 }
 
 #uvu section.design_conception {
+    --uvu-dc-side-spacing: 40px;
+
+    align-items: center;
+    justify-items: center;
     background: #333;
     padding: 40px var(--side-margin);
     color: white;
     display: grid;
-    grid-template-columns: 1fr 1fr min-content 1fr min-content 1fr min-content 1fr 1fr;
+    grid-template-columns:
+        var(--uvu-dc-side-spacing)
+        var(--uvu-dc-side-spacing)
+        1fr min-content 1fr min-content 1fr
+        var(--uvu-dc-side-spacing)
+        var(--uvu-dc-side-spacing);
 }
 
 #uvu section.design_conception h3 {
     grid-column: span 9;
+    text-align: left;
     font-weight: 900;
     font-size: 22px;
-    line-height: 40px;
+    line-height: 20px;
     margin: 0;
+    margin-bottom: 40px;
+}
+
+#uvu section.design_conception figcaption {
+    text-align: center;
+    font-weight: 800;
+    font-size: 12px;
 }
 
 #uvu section.design_conception > figure {
@@ -1135,6 +1152,38 @@ uvu-journeys-chart {
     grid-column: 3 / 4;
 }
 
+#uvu section.design_conception > figure:last-of-type {
+    grid-column: 2 / 9;
+}
+
+#uvu section.design_conception > figure:last-of-type figcaption {
+    font-weight: 900;
+}
+
+#uvu section.design_conception img[src $= "plus-symbol.svg"] {
+    width: 25px;
+    margin: 20px;
+}
+
+#uvu section.design_conception img[src $= "arrow-symbol.svg"] {
+    margin: 20px;
+}
+
+#uvu section.design_conception img[src $= "arrow-symbol.svg"].to-station {
+    grid-column: 3 / 4;
+}
+
+#uvu section.design_conception img[src $= "arrow-symbol.svg"].to-scooter {
+    grid-column: 5 / 6;
+}
+
+#uvu section.design_conception img[src $= "arrow-symbol.svg"].to-app {
+    grid-column: 7 / 8;
+}
+
+#uvu section.design_conception img[src $= "concept-vertical.svg"] {
+    display: none;
+}
 
 #uvu:not(:target) ~ footer .back.uvu {
     display: none;
