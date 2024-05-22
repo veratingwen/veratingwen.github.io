@@ -1107,6 +1107,11 @@ uvu-journeys-chart {
 
 #uvu section.design_conception {
     --uvu-dc-side-spacing: 40px;
+    --uvu-dc-concept-width: calc(var(--page-width) - var(--uvu-dc-side-spacing) * 2);
+    --uvu-dc-concept-height-width-ratio: 124 / 882;
+    --uvu-dc-concept-height: calc(var(--uvu-dc-concept-height-width-ratio) * var(--uvu-dc-concept-width));
+    --uvu-dc-sketch-concept-heights-ratio: 140 / 170;
+    --uvu-dc-sketch-height: calc(var(--uvu-dc-sketch-concept-heights-ratio) * var(--uvu-dc-concept-height));
 
     align-items: center;
     justify-items: center;
@@ -1116,10 +1121,22 @@ uvu-journeys-chart {
     display: grid;
     grid-template-columns:
         var(--uvu-dc-side-spacing)
-        var(--uvu-dc-side-spacing)
+        calc(var(--uvu-dc-concept-width) * .1)
         1fr min-content 1fr min-content 1fr
-        var(--uvu-dc-side-spacing)
+        calc(var(--uvu-dc-concept-width) * .1)
         var(--uvu-dc-side-spacing);
+}
+
+@media (max-width: 960px) {
+    #uvu section.design_conception {
+        --uvu-dc-side-spacing: 0px;
+    }
+}
+
+@media (max-width: 720px) {
+    #uvu section.design_conception {
+        --side-margin: 10px;
+    }
 }
 
 #uvu section.design_conception h3 {
@@ -1132,19 +1149,33 @@ uvu-journeys-chart {
     margin-bottom: 40px;
 }
 
-#uvu section.design_conception figcaption {
-    text-align: center;
-    font-weight: 800;
-    font-size: 12px;
-}
-
 #uvu section.design_conception > figure {
     width: 100%;
     height: 100%;
     margin: 0;
+    text-align: center;
+    position: relative;
 }
 
-#uvu section.design_conception > figure img {
+#uvu section.design_conception figcaption {
+    font-weight: 800;
+    font-size: 12px;
+}
+
+#uvu section.design_conception > figure:not(:last-of-type) {
+    height: min-content;
+}
+
+#uvu section.design_conception > figure:not(:last-of-type) figcaption {
+    margin-bottom: 10px;
+}
+
+#uvu section.design_conception > figure:not(:last-of-type) img {
+    height: var(--uvu-dc-sketch-height);
+    image-rendering: crisp-edges;
+}
+
+#uvu section.design_conception > figure:last-of-type img {
     width: 100%;
 }
 
@@ -1166,7 +1197,7 @@ uvu-journeys-chart {
 }
 
 #uvu section.design_conception img[src $= "arrow-symbol.svg"] {
-    margin: 20px;
+    margin: 10px;
 }
 
 #uvu section.design_conception img[src $= "arrow-symbol.svg"].to-station {
@@ -1181,8 +1212,27 @@ uvu-journeys-chart {
     grid-column: 7 / 8;
 }
 
-#uvu section.design_conception img[src $= "concept-vertical.svg"] {
-    display: none;
+#uvu section.design_conception img[srcset *= "uvu/app-sketch"] {
+    transform: rotate(1.68deg);
+}
+
+#uvu section.design_conception img[srcset *= "uvu/app-sketch"] ~ img[srcset *= "uvu/scooter-sketch"] {
+    position: absolute;
+    top: calc(35px + var(--uvu-dc-sketch-height) * 0.4);
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.4);
+}
+
+@media (max-width: 960px) {
+    #uvu section.design_conception img[srcset *= "uvu/app-sketch"] ~ img[srcset *= "uvu/scooter-sketch"] {
+        top: calc(35px + var(--uvu-dc-sketch-height) * 0.35);
+    }
+}
+
+@media (max-width: 720px) {
+    #uvu section.design_conception img[srcset *= "uvu/app-sketch"] ~ img[srcset *= "uvu/scooter-sketch"] {
+        top: calc(35px + var(--uvu-dc-sketch-height) * 0.3);
+    }
 }
 
 #uvu:not(:target) ~ footer .back.uvu {
