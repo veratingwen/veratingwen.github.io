@@ -133,7 +133,7 @@ proj-card {
     }
 }
 
-proj-card:hover {
+a[href] > proj-card:hover {
     cursor: pointer;
     border-color: var(--home-accent-color);
 }
